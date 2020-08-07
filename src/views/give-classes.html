@@ -6,25 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#8257e5">
     <title>Proffy | Sua plataforma de estudos on-line</title>
-    <link rel="short cut icon" href="../images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/partials/header.css">
-    <link rel="stylesheet" href="../styles/partials/forms.css">
-    <link rel="stylesheet" href="../styles/partials/page-give-classes.css">
+    <link rel="short cut icon" href="images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/partials/header.css">
+    <link rel="stylesheet" href="styles/partials/forms.css">
+    <link rel="stylesheet" href="styles/partials/page-give-classes.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&amp;family=Poppins:wght@400;600&amp;display=swap"
         rel="stylesheet">
+    <script src="scripts/addField.js" defer></script>
 </head>
 
 <body id="page-give-classes">
     <div id="container">
         <header class="page-header">
             <div class="top-bar-container">
-                <a href="../index.html">
-                    <img src="../images/icons/back.svg" alt="Voltar">
+                <a href="/">
+                    <img src="images/icons/back.svg" alt="Voltar">
                 </a>
 
-                <img src="../images/logo.svg" alt="Proffy">
+                <img src="images/logo.svg" alt="Proffy">
             </div>
 
             <div class="header-content">
@@ -66,28 +67,21 @@
                         <label for="subject">Matéria</label>
                         <select name="subject" id="subject" required>
                             <option value="">Selecione uma opção</option>
-                            <option value="1">Artes</option>
-                            <option value="2">Biologia</option>
-                            <option value="3">Ciências</option>
-                            <option value="4">Educação física</option>
-                            <option value="5">Física</option>
-                            <option value="6">Geografia</option>
-                            <option value="7">História</option>
-                            <option value="8">Matemática</option>
-                            <option value="9">Português</option>
-                            <option value="10">Química</option>
+                            {% for subject in subjects %}
+                            <option value="{{ loop.index }}">{{ subject }}</option>
+                            {% endfor %}
                         </select>
                     </div>
 
                     <div class="input-block">
                         <label for="cost">Custo da sua hora/aula <small>(R$)</small></label>
-                        <input type="cost" id="cost" type="number" required>
+                        <input name="cost" type="cost" id="cost" type="number" required>
                     </div>
                 </fieldset>
 
                 <fieldset>
                     <legend>Horários disponíveis
-                        <button id="add-time">+ Novo horário</button>
+                        <button type="button" id="add-time">+ Novo horário</button>
                     </legend>
 
                     <div class="schedule-item">
@@ -95,39 +89,9 @@
                             <label for="weekday">Dia da semana</label>
                             <select name="weekday[]" required>
                                 <option value="">Selecione uma opção</option>
-                                <option value="0">Domingo</option>
-                                <option value="1">Segunda-feira</option>
-                                <option value="2">Terça-feira</option>
-                                <option value="3">Quarta-feira</option>
-                                <option value="4">Quinta-feira</option>
-                                <option value="5">Sexta-feira</option>
-                                <option value="6">Sábado</option>
-                            </select>
-                        </div>
-
-                        <div class="input-block">
-                            <label for="time_from">Das</label>
-                            <input type="time" name="time_from[]" required>
-                        </div>
-
-                        <div class="input-block">
-                            <label for="time_to">Até</label>
-                            <input type="time" name="time_to[]" required>
-                        </div>
-                    </div>
-
-                    <div class="schedule-item">
-                        <div class="select-block">
-                            <label for="weekday">Dia da semana</label>
-                            <select name="weekday[]" required>
-                                <option value="">Selecione uma opção</option>
-                                <option value="0">Domingo</option>
-                                <option value="1">Segunda-feira</option>
-                                <option value="2">Terça-feira</option>
-                                <option value="3">Quarta-feira</option>
-                                <option value="4">Quinta-feira</option>
-                                <option value="5">Sexta-feira</option>
-                                <option value="6">Sábado</option>
+                                {% for weekday in weekdays %}
+                                <option value="{{ loop.index0 }}">{{ weekday }}</option>
+                                {% endfor %}
                             </select>
                         </div>
 
@@ -146,7 +110,7 @@
 
             <footer>
                 <p>
-                    <img src="../images/icons/warning.svg" alt="Aviso importante">
+                    <img src="images/icons/warning.svg" alt="Aviso importante">
                     Importante! <br>
                     Preencha todos os dados
                 </p>
