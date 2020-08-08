@@ -7,7 +7,7 @@ function cloneField() {
 
     fields.forEach(function (field) {
         field.value = '';
-    })
+    });
 
     document.querySelector('#schedule-items').appendChild(newFieldContainer);
 }

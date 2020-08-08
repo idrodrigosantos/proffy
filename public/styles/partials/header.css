@@ -46,12 +46,7 @@
     margin-top: 2.4rem;
 }
 
-
 @media (min-width: 700px) {
-    #page-study #container {
-        max-width: 100vw;
-    }
-
     .page-header {
         height: 340px;
     }

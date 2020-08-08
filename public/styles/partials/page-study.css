@@ -93,7 +93,7 @@
 
 .teacher-item footer p {
     font-size: 1.4rem;
-    line-height: 2.rem;
+    line-height: 2.4rem;
     color: var(--color-text-complement);
 }
 
@@ -109,6 +109,7 @@
     background-color: var(--color-secondary);
     color: var(--color-button-text);
     border: 0;
+    border-radius: 0.8rem;
     cursor: pointer;
     font: 700 1.4rem Archivo;
     display: flex;
@@ -124,7 +125,7 @@
 }
 
 #page-study main .no-results {
-    max-width: 300rem;
+    max-width: 30rem;
     margin: 12rem auto;
     text-align: center;
 }

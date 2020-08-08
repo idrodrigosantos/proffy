@@ -1,6 +1,6 @@
 const Database = require('./database/db');
 
-const { subjects, weekdays, getSubject, convertHoursToMinutes } = require('./utils/format');
+const { subjects, weekdays, getSubjects, convertHoursToMinutes } = require('./utils/format');
 
 function pageLanding(req, res) {
     return res.render('index.html');
@@ -23,10 +23,10 @@ async function pageStudy(req, res) {
         WHERE EXISTS (
             SELECT class_schedule.*
             FROM class_schedule
-            WHERE class_schedule.class_id = classes.id = classes.id
+            WHERE class_schedule.class_id = classes.id
             AND class_schedule.weekday = ${filters.weekday}
-            AND class_schedule.time_from <= ${filters.timeToMinutes}
-            AND class_schedule.time_to > ${filters.timeToMinutes}
+            AND class_schedule.time_from <= ${timeToMinutes}
+            AND class_schedule.time_to > ${timeToMinutes}
         )
         AND classes.subject = '${filters.subject}';
     `;
@@ -37,10 +37,10 @@ async function pageStudy(req, res) {
         const proffys = await db.all(query);
 
         proffys.map((proffy) => {
-            proffy.subject = getSubject(proffy.subject);
+            proffy.subject = getSubjects(proffy.subject);
         });
 
-        return res.render('study.html', { proffs, subjects, filters, weekdays });
+        return res.render('study.html', { proffys, subjects, filters, weekdays });
     } catch (error) {
         console.log(error);
     }
@@ -65,15 +65,13 @@ async function saveClasses(req, res) {
         cost: req.body.cost
     }
 
-    const classScheduleValues = req.body.weekday.map(
-        (weekday, index) => {
-            return {
-                weekday,
-                time_from: convertHoursToMinutes(req.body.time_from[index]),
-                time_to: convertHoursToMinutes(req.body.time_to[index])
-            }
+    const classScheduleValues = req.body.weekday.map((weekday, index) => {
+        return {
+            weekday,
+            time_from: convertHoursToMinutes(req.body.time_from[index]),
+            time_to: convertHoursToMinutes(req.body.time_to[index])
         }
-    );
+    });
 
     try {
         const db = await Database;
