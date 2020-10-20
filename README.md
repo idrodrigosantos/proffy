@@ -39,6 +39,8 @@ http://localhost:5500/
 * JavaScript
 * Node.js
 * SQLite
+* Nunjucks
+* Express.js
 
 ## Dependências
 * [Express](https://github.com/expressjs/express)
