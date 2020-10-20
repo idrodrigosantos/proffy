@@ -24,7 +24,7 @@ $ node src/database/db.js
 ## Executando o sistema
 ```bash
 # Inicie o servidor
-$ npm run dev
+$ npm start
 ```
 
 No navegador acesse o endereço:
