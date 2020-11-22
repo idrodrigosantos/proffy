@@ -9,7 +9,7 @@ Sistema de estudos on-line.
 ## Instalação
 ```bash
 # Clone o repositório
-$ git clone https://github.com/imsantosrodrigo/proffy.git
+$ git clone https://github.com/idrodrigosantos/proffy.git
 
 # Acesse o diretório
 $ cd proffy
